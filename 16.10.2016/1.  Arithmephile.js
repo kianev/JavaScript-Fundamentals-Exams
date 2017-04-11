@@ -8,10 +8,10 @@ function arithmephile(input) {
     for (let i = 1; i <= input.length; i++) {
 
         if(input[i] > 0 && input[i] < 10){
-          localSeq = input[i];
-          startSeq = i;
-          calculation = input.slice((startSeq + 1),(localSeq + startSeq + 1));
-          calculation = calculation.reduce((a,b) => a * b);
+            localSeq = input[i];
+            startSeq = i;
+            calculation = input.slice((startSeq + 1),(localSeq + startSeq + 1));
+            calculation = calculation.reduce((a,b) => a * b);
             if(calculation > result){
                 result = calculation;
             }
