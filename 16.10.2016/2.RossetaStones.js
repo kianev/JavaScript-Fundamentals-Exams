@@ -13,7 +13,7 @@ function rosseta(input) {
         }
     }
     result = result.replace(/@/g, ' ');
-     //console.log(result);
+     console.log(result);
 }
 rosseta([ '2',
     '59 36',
