@@ -1,54 +1,53 @@
 function medenkaWars(input){
-    let vitkorWhite = [];
-    let naskorDark = [];
+    let medenkaDamage = 60;
+    let damageDone = 0;
+    let whitePoints = 0;
+    let darkPoints = 0;
     let whiteBonusCount = 0;
     let darkBonusCount = 0;
     let whiteLastAttack = -1;
     let darkLastAttack = -1;
-    let whiteBonusCountSum = 0;
-    let darkBonusCountSum = 0;
 
     for (let i = 0; i < input.length; i++) {
-        let [damage, fraction, medenka] = input[i].split(" ");
+        let [damage, fraction] = input[i].split(" ");
         damage = Number(damage);
+        let damageDone = medenkaDamage * damage;
+
         if(fraction == "white"){
-            vitkorWhite.push(damage * 60);
+            whiteBonusCount++;
             if(whiteLastAttack == damage){
-                whiteBonusCount++;
-                console.log(whiteBonusCount);
                 if(whiteBonusCount == 5){
-                    whiteBonusCountSum += (damage * 60 * 4.5) - (damage * 60);
+                    damageDone = damageDone * 4.5;
                     whiteBonusCount = 0;
                 }
             }else{
                 whiteLastAttack = damage;
                 whiteBonusCount = 1;
             }
+            whitePoints += damageDone;
 
         }else if(fraction == "dark"){
-            naskorDark.push(damage * 60);
+            darkBonusCount++;
             if(darkLastAttack == damage){
-                darkBonusCount++;
                 if(darkBonusCount == 2){
-                    darkBonusCountSum += (damage * 60 * 2.75) - (damage * 60);
+                    damageDone = damageDone * 2.75;
                     darkBonusCount = 0;
                 }
             }else{
                 darkLastAttack = damage;
                 darkBonusCount = 1;
             }
+            darkPoints += damageDone;
         }
     }
 
-    let vitkorResult = vitkorWhite.reduce((a,b) => a + b) + whiteBonusCountSum;
-    let naskorResult = naskorDark.reduce((a,b) => a + b) + darkBonusCountSum;
 
-    if(vitkorResult > naskorResult){
+    if(whitePoints > darkPoints){
         console.log("Winner - Vitkor");
-        console.log("Damage - " + vitkorResult);
+        console.log("Damage - " + whitePoints);
     }else{
         console.log("Winner - Naskor");
-        console.log("Damage - " + naskorResult);
+        console.log("Damage - " + darkPoints);
     }
 }
 
