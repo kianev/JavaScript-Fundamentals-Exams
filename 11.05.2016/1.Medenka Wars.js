@@ -13,11 +13,11 @@ function medenkaWars(input){
         damage = Number(damage);
         let damageDone = medenkaDamage * damage;
 
-        if(fraction == "white"){
+        if(fraction === "white"){
             whiteBonusCount++;
             if(whiteLastAttack == damage){
                 if(whiteBonusCount == 5){
-                    damageDone = damageDone * 4.5;
+                    damageDone = damageDone *= 4.5;
                     whiteBonusCount = 0;
                 }
             }else{
@@ -26,11 +26,11 @@ function medenkaWars(input){
             }
             whitePoints += damageDone;
 
-        }else if(fraction == "dark"){
+        }else if(fraction === "dark"){
             darkBonusCount++;
             if(darkLastAttack == damage){
                 if(darkBonusCount == 2){
-                    damageDone = damageDone * 2.75;
+                    damageDone = damageDone *= 2.75;
                     darkBonusCount = 0;
                 }
             }else{
