@@ -1,10 +1,11 @@
 function examResult(input) {
-    let courseNeeded = input.pop().trim();
+    let courseNeeded = input[input.length-1];
+    input.pop();
     let average = 0;
     let counter = 0;
 
     for (let i = 0; i < input.length; i++) {
-        let [name, course, examPoints, bonusPoints] = input[i].split(" ");
+        let [name, course, examPoints, bonusPoints] = input[i].split(" ").filter(t => t != "");
         examPoints = Number(examPoints);
         bonusPoints = Number(bonusPoints);
         if(examPoints < 100){
@@ -26,7 +27,7 @@ function examResult(input) {
     let averagePoints = average/counter;
    console.log('"' + courseNeeded + '"' + ' ' + 'average points ->' + ' '+ averagePoints);
 }
-examResult([
+/*examResult([
     'Pesho C#-Advanced 100 3',
     'Gosho Java-Basics 157 3',
     'Tosho HTML&CSS 317 12',
@@ -35,4 +36,13 @@ examResult([
     'Kircho C#-Advanced 300 0',
     'Niki C#-Advanced 400 10',
     'C#-Advanced'
-]);
+]);*/
+
+   examResult([
+           "Bankin    HTML&CSS                0          0",
+           "RoYaL        HTML5&CSS        340         10",
+           "Bi0GaMe      Java   10    10",
+           "Stamat HQC   190 10",
+           "MINKA OOP   230 10",
+           "Java"
+       ]);
